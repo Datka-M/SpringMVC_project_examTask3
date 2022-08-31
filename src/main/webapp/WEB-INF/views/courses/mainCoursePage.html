@@ -13,6 +13,10 @@
             align-items: center;
             padding-left: 50%;
         }
+        body{
+            background-size: cover;
+            background-image: url(https://leverageedublog.s3.ap-south-1.amazonaws.com/blog/wp-content/uploads/2019/08/23163109/Course-after-MBA.png);
+        }
     </style>
 </head>
 <body>
@@ -41,23 +45,23 @@
         <div th:each="course:${courses}">
             <tbody>
             <tr>
-                <th scope="row" th:text="${course.id}"></th>
-                <td th:text="${course.courseName}"></td>
-                <td th:text="${course.dateOfStart}"></td>
-                <td th:text="${course.duration}"></td>
-                <td th:text="${course.image}"></td>
-                <td th:text="${course.description}"></td>
+                <th scope="row" th:text="${course.getId()}"></th>
+                <td th:text="${course.getCourseName()}"></td>
+                <td th:text="${course.getDateOfStart()}"></td>
+                <td th:text="${course.getDuration()}"></td>
+                <td th:text="${course.getImage()}"></td>
+                <td th:text="${course.getDescription()}"></td>
 
                 <td><a th:href="@{/allLessons/{courseId}(courseId=${course.getId()})}"
-                       class="btn btn-primary">lessons</a></td>
+                       class="btn btn-info">lessons</a></td>
 
 
-                <td><a type="button" th:href="@{/editCourse/{courseId}(courseId=${course.getId()})}" class="card-link">
+                <td><a type="button" th:href="@{/editCourse/{id}/{companyId}(id=${course.getId()},companyId = ${companyId})}" class="btn btn-warning">
                     UPDATE</a></td>
 
                 <td>
                     <form th:method="DELETE" th:action="@{/deleteCourse/{courseId}/{compId}(courseId=${course.getId()},compId=${id})}">
-                        <input type="submit"  class="btn btn-primary" th:value="DELETE"/>
+                        <input type="submit" class="btn btn-danger" th:value="DELETE"/>
                     </form>
                 </td>
                 <td>
@@ -67,8 +71,8 @@
                                 th:object="${instructor}"
                                 th:field="*{id}">
                             <option th:each="instructor : ${instructors}"
-                                    th:value="${instructor.id}"
-                                    th:text="${instructor.firstName}">
+                                    th:value="${instructor.getId()}"
+                                    th:text="${instructor.getFirstName()}">
                             </option>
                         </select>
                         <input type="submit" value="assign" style="height: 30px;width: 60px; background: azure"/>

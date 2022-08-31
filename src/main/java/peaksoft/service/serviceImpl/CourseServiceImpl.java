@@ -40,7 +40,7 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public void updateCourseById(Long id, Course course) {
-        courseRepository.updateCourseById(id, course);
+    public Course updateCourseById(Long id, Course course) {
+       return courseRepository.updateCourseById(id, course);
     }
 }

@@ -13,6 +13,10 @@
             align-items: center;
             padding-left: 50%;
         }
+        body{
+            background-size: cover;
+            background-image: url(https://www.wealthmanagement.com/sites/wealthmanagement.com/files/online-learning_0.jpg);
+        }
     </style>
 
 </head>
@@ -40,12 +44,12 @@
                 <td th:text="${video.getLink()}"></td>
 
 
-                <td><a type="button" th:href="@{/editVideo/{videoId}(videoId=${video.id})}" class="card-link">
-                    EDIT</a></td>
+                <td><a type="button" th:href="@{/editVideo/{videoId}(videoId=${video.id})}" class="btn btn-warning">
+                    UPDATE</a></td>
 
                 <td>
                     <form th:method="DELETE" th:action="@{/deleteVideo/{id}/{lessonId}(id=${video.getId()},lessonId=${lessonId})}">
-                        <input type="submit" class="btn btn-primary" th:value="DELETE"/>
+                        <input type="submit" class="btn btn-danger" th:value="DELETE"/>
                     </form>
                 </td>
             </tr>

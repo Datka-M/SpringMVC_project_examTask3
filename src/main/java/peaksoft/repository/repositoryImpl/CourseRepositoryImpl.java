@@ -50,13 +50,14 @@ public class CourseRepositoryImpl implements CourseRepository {
     }
 
     @Override
-    public void updateCourseById(Long id, Course course) {
+    @Transactional
+    public Course updateCourseById(Long id, Course course) {
         Course course1 = manager.find(Course.class, id);
         course1.setCourseName(course.getCourseName());
         course1.setDateOfStart(course.getDateOfStart());
         course1.setDuration(course.getDuration());
         course1.setImage(course.getImage());
         course1.setDescription(course.getDescription());
-        manager.merge(course1);
+       return manager.merge(course1);
     }
 }

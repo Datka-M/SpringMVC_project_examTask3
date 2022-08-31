@@ -13,6 +13,10 @@
             align-items: center;
             padding-left: 50%;
         }
+        body{
+            background-size: cover;
+            background-image: url(https://leverageedublog.s3.ap-south-1.amazonaws.com/blog/wp-content/uploads/2020/04/01170800/Free-Online-Courses-with-Certificates.jpg);
+        }
     </style>
 
 </head>
@@ -44,11 +48,11 @@
                 <td th:text="${instructor.getSpecialization}"></td>
 
                 <td><a type="button" th:href="@{/editInstructor/{instructorId}(instructorId=${instructor.getId()})}"
-                       class="card-link">edit</a></td>
+                       class="btn btn-warning">UPDATE</a></td>
 
                 <td><form th:method="DELETE"
                           th:action="@{/{id}/{instructorId}/delete(id=${companyId},instructorId=${instructor.getId()})}">
-                        <input type="submit" class="btn btn-primary" th:value="DELETE"/>
+                        <input type="submit" class="btn btn-danger" th:value="DELETE"/>
                     </form>
                 </td>
 

@@ -11,6 +11,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import static javax.persistence.CascadeType.*;
+
 @Entity
 @Table(name = "courses")
 @Getter
@@ -32,19 +34,19 @@ public class Course {
     private String image;
     private String description;
 
-    @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH,CascadeType.PERSIST})
+    @ManyToOne(cascade = {MERGE, DETACH, REFRESH},fetch = FetchType.LAZY)
     private Company company;
 
 
-    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE,
-            CascadeType.PERSIST, CascadeType.REFRESH}, mappedBy = "courses")
+    @ManyToMany(cascade = {DETACH, MERGE,
+            PERSIST, REFRESH}, mappedBy = "courses")
     private List<Instructor> instructors;
 
-    @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "course")
+    @OneToMany(cascade = {ALL}, mappedBy = "course")
     private List<Student> students;
 
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "course")
+    @OneToMany(cascade = ALL, mappedBy = "course")
     private List<Lesson> lessons;
 
     public Course(String courseName, LocalDate dateOfStart, String duration, String image, String description) {

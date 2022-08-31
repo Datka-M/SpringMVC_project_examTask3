@@ -14,5 +14,5 @@ public interface CourseRepository {
 
     List<Course> getAllCoursesById(Long id);
 
-    void updateCourseById(Long id, Course course);
+    Course updateCourseById(Long id, Course course);
 }
