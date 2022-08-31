@@ -55,8 +55,6 @@ public class CourseController {
 
     @GetMapping("/editCourse/{id}/{companyId}")
     public String editCourse(Model model, @PathVariable("id") Long id,@PathVariable("companyId") Long companyId) {
-//        Course course = courseService.getCourseById(id);
-//        model.addAttribute("course", course);
         model.addAttribute("course", courseService.getCourseById(id));
         return "/courses/updateCourse";
     }
